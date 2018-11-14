@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<table>
+		<tr valign="top">
+			<td width="138px"><img src="{{ user.avatar(128) }}"></td>
+			<td>
+				<h1>User: {{ user.username }}</h1>
+				{% if user.last_seen %}
+					<p>
+						<strong>Last seen on:</strong> {{ moment(user.last_seen).format('LLL') }}
+					</p>
+				{% endif %}
+				<p>
+					<strong>Portfolio Value:</strong> ${{ '%0.2f'|format(user.portfolio_value())}}
+			</td>
+		</tr>
+	</table>
+	<hr>
+	<h2>Current Holdings:</h2>
+	<table width="60%">
+		<tr>
+			<th>Team Name</th>
+			<th>No. of Shares</th>
+			<th>Current Value</th>
+		</tr>
+		{% for holding in holdings %}
+			{% include '_holding.html' %}
+		{% endfor %}
+	</table>
+{% endblock %}

@@ -1,0 +1,121 @@
+2018-11-11 16:03:03,173 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 45, in validate
+    if self.user.cash < (self.shares * self.stock.price):
+AttributeError: 'TransactionForm' object has no attribute 'user'
+2018-11-11 16:06:40,797 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:06:48,421 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 46, in validate
+    if current_user.cash < (self.shares * self.stock.price):
+AttributeError: 'QuerySelectField' object has no attribute 'price'
+2018-11-11 16:07:18,133 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:07:25,467 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 46, in validate
+    if current_user.cash < (self.shares * self.stock.data.price):
+TypeError: unsupported operand type(s) for *: 'IntegerField' and 'float'
+2018-11-11 16:07:49,335 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:07:55,003 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 47, in validate
+    raise ValidationError('You cannot afford this trade.')
+wtforms.validators.ValidationError: You cannot afford this trade.
+2018-11-11 16:18:18,195 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 47, in validate
+    elif self.buy_or_sell.data == "sell":
+wtforms.validators.ValidationError: You cannot afford this trade.
+2018-11-11 16:24:47,928 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:25:41,094 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:29:10,567 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]

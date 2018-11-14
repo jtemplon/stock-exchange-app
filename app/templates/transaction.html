@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<h1>Make a Trade</h1>
+	<p>Hi {{ current_user.username }}, you currently have ${{ '$%.2f'|format(current_user.cash) }} in cash.</p>
+	{% if current_user.holdings %}
+	<div style="padding-bottom: 25px;">
+		<p>You currently own these stocks:</p>
+		{% for holding in current_user.holdings %}
+		<strong>{{ holding.stock }}:</strong> {{ holding.shares }} shares<br>
+		{% endfor %}
+	</div>
+	{% endif %}
+	
+	<div class="row">
+	        <div class="col-md-4">
+	            {{ wtf.quick_form(form) }}
+	        </div>
+	</div>
+{% endblock %}

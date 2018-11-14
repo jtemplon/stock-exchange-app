@@ -1,0 +1,46 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+	{% if title %}
+      {{ title }} - Mid-Major Madness Stock Exchange
+      {% else %}
+      Welcome to the Mid-Major Madness Stock Exchange
+      {% endif %}
+{% endblock %}
+
+{% block navbar %}
+	<nav class="navbar navbar-default">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+		   	 <li><a href="{{ url_for('index') }}">Home</a></li>
+		   {% if current_user.is_anonymous %}
+		   	 <li><a href="{{ url_for('login') }}">Login</a></li>
+		   {% else %}
+		   	 <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+		   	 <li><a href="{{ url_for('transaction') }}">Make a Trade</a></li>
+		   	 <li><a href="{{ url_for('leaders') }}">Leaders</a></li>
+		   	 <li><a href="{{ url_for('logout') }}">Logout</a></li>
+		   {% endif %}
+	   </ul>
+   </div>
+	</nav>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-info" role="alert">{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+	{% endwith %}
+	
+	{% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+	{{ super() }}
+	{{ moment.include_moment() }}
+{% endblock %}

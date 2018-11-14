@@ -1,0 +1,116 @@
+2018-11-11 13:55:43,057 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:55:45,750 ERROR: Exception on /leaders [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 105, in leaders
+    leaders = users.sort(key=portfolio_value(), reverse=True)[:20]
+NameError: name 'portfolio_value' is not defined
+2018-11-11 13:58:57,804 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 14:06:07,276 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:51]
+2018-11-11 14:51:24,066 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:53]
+2018-11-11 14:53:52,919 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:53]
+2018-11-11 14:57:14,798 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:53]
+2018-11-11 15:06:40,408 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:09:39,829 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:10:06,880 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:10:21,094 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:11:16,345 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:11:43,741 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:13:26,286 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:13:52,969 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:25:42,399 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 15:25:46,349 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: holding.purchase_price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 21, in index
+    return render_template('index.html', title='Home', holdings=current_user.holdings)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 39, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 5, in block "app_content"
+    <p>Your portfolio is currently worth ${{ '%0.2f'|format(current_user.portfolio_value())}}.</p>
+  File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 55, in portfolio_value
+    holdings_value = sum([ h.value() for h in self.holdings ])
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/orm/dynamic.py", line 251, in __iter__
+    return iter(self._clone(sess))
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: holding.purchase_price [SQL: 'SELECT holding.id AS holding_id, holding.user_id AS holding_user_id, holding.stock AS holding_stock, holding.shares AS holding_shares, holding.purchase_price AS holding_purchase_price \nFROM holding \nWHERE ? = holding.user_id'] [parameters: (1,)] (Background on this error at: http://sqlalche.me/e/e3q8)

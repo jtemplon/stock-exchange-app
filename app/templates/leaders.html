@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+      <h1>Highest Value Portfolios</h1>
+	  <table width=80%>
+		<tr>
+			<th>Username</th>
+			<th>Portfolio Value</th>
+			<th>Portfolio Link</th>
+		</tr>
+	  	{% for l in leaders %}
+	  	<tr>
+			<td>{{ l.username }}</td> 
+			<td>{{ '$%.2f'|format(l.portfolio_value()) }}</td> 
+			<td><a href="{{ url_for('user', username=l.username) }}">Holdings</a></td>
+		</tr>
+		{% endfor %}
+{% endblock %}
