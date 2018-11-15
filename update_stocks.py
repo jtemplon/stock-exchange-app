@@ -2,7 +2,7 @@ import sqlite3
 import sys
 import os
 import pandas as pd
-import datetime.datetime
+from datetime import datetime
 
 def scrape_kenpom():
     url = "https://kenpom.com"
