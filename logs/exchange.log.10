@@ -1,30 +1,4 @@
-2018-11-11 12:39:46,945 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 87, in transaction
-    new_transaction = Transaction(
-NameError: name 'Transaction' is not defined
-2018-11-11 12:40:04,346 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 12:42:59,246 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:07:41,549 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:07:47,928 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:07:55,367 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:08:50,528 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:12:32,097 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:12:35,282 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+2018-11-11 13:19:59,712 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -59,47 +33,88 @@ Traceback (most recent call last):
   File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 31, in top-level template code
     {% block content %}{% endblock %}
   File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 5, in block "content"
-    <p>Your portfolio is current worth ${{ current_user.portfolio_value() }}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 37, in portfolio_value
-    return self.cash + sum(self.holdings.value())
-TypeError: value() missing 1 required positional argument: 'column'
-2018-11-11 13:13:17,764 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
-2018-11-11 13:13:19,413 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 19, in index
-    return render_template('index.html', title='Home', holdings=current_user.holdings)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 5, in block "content"
-    <p>Your portfolio is current worth ${{ current_user.portfolio_value() }}
+    <p>Your portfolio is current worth ${{ current_user.portfolio_value() }}</p>
   File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 37, in portfolio_value
     return self.cash + sum(self.holdings.value)
 TypeError: 'method' object is not iterable
+2018-11-11 13:21:11,324 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:21:25,701 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:24:03,236 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:24:05,643 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 19, in index
+    return render_template('index.html', title='Home', holdings=current_user.holdings)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 5, in template
+    <p>Your portfolio is currently worth ${{ current_user.portfolio_value()|floatformat:-2 }}.</p>
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/parser.py", line 876, in subparse
+    self.stream.expect('variable_end')
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/lexer.py", line 384, in expect
+    self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got ':'
+2018-11-11 13:25:37,266 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:27:43,890 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:32:02,912 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:32:58,100 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:45:48,700 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]
+2018-11-11 13:45:53,601 ERROR: Exception on /leaders [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 104, in leaders
+    leaders = User.query.order_by(User.portfolio_value.desc()).all(20)
+AttributeError: 'function' object has no attribute 'desc'
+2018-11-11 13:50:00,123 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:49]

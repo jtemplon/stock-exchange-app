@@ -1,7 +1,4 @@
-2018-11-11 15:26:13,740 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:26:29,750 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:26:37,165 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:26:39,974 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+2018-11-11 16:03:03,173 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -17,40 +14,15 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 21, in index
-    return render_template('index.html', title='Home', holdings=current_user.holdings)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 39, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 22, in block "app_content"
-    <td width="10%">${{ '%0.2f'|format(holding.value_change()) }}</td>
-  File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 73, in value_change
-    return self.value - round(self.shares * self.purchase_price, 2)
-TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
-2018-11-11 15:27:59,581 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 45, in validate
+    if self.user.cash < (self.shares * self.stock.price):
+AttributeError: 'TransactionForm' object has no attribute 'user'
+2018-11-11 16:06:40,797 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:06:48,421 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -66,42 +38,84 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 21, in index
-    return render_template('index.html', title='Home', holdings=current_user.holdings)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 46, in validate
+    if current_user.cash < (self.shares * self.stock.price):
+AttributeError: 'QuerySelectField' object has no attribute 'price'
+2018-11-11 16:07:18,133 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:07:25,467 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 39, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 22, in block "app_content"
-    <td width="10%">${{ '%0.2f'|format(holding.value_change()) }}</td>
-  File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 73, in value_change
-    return self.value - round(self.shares * self.purchase_price, 2)
-TypeError: unsupported operand type(s) for -: 'method' and 'float'
-2018-11-11 15:28:28,353 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:29:10,062 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:29:51,057 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:30:33,201 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:30:54,978 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-11 15:46:00,430 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 46, in validate
+    if current_user.cash < (self.shares * self.stock.data.price):
+TypeError: unsupported operand type(s) for *: 'IntegerField' and 'float'
+2018-11-11 16:07:49,335 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:07:55,003 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 47, in validate
+    raise ValidationError('You cannot afford this trade.')
+wtforms.validators.ValidationError: You cannot afford this trade.
+2018-11-11 16:18:18,195 ERROR: Exception on /transaction [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 100, in transaction
+    if form.validate_on_submit():
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_wtf/form.py", line 101, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/johntemplon/Desktop/stock-exchange/app/forms.py", line 47, in validate
+    elif self.buy_or_sell.data == "sell":
+wtforms.validators.ValidationError: You cannot afford this trade.
+2018-11-11 16:24:47,928 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:25:41,094 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
+2018-11-11 16:29:10,567 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]

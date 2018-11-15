@@ -1,31 +1,4 @@
-2018-11-12 22:33:09,963 ERROR: Exception on /reset_password_request [POST] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 67, in reset_password_request
-    send_password_reset_email(user)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/email.py", line 31, in send_password_reset_email
-    token=token
-  File "/Users/johntemplon/Desktop/stock-exchange/app/email.py", line 14, in send_email
-    msg.html = html.body
-NameError: name 'html' is not defined
-2018-11-12 22:33:39,376 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:38:13,052 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:38:41,594 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:43:57,425 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:45:08,595 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:51:40,547 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:51:42,330 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+2018-11-14 21:54:23,624 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -41,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 21, in index
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/routes.py", line 21, in index
     return render_template('index.html', title='Home', holdings=current_user.holdings)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -55,9 +28,9 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 1, in top-level template code
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 1, in top-level template code
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
     {% block doc -%}
@@ -67,15 +40,15 @@ Traceback (most recent call last):
     {% block body -%}
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
     {% block content -%}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 39, in block "content"
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/base.html", line 39, in block "content"
     {% block app_content %}{% endblock %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 22, in block "app_content"
-    <td width="10%">{{ holding.value_change_str() }}</td>
-  File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 76, in value_change_str
-    return "${%.2f}".format(self.value_change).replace("$-", "-$")
-KeyError: '%'
-2018-11-12 22:52:05,527 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange/app/__init__.py:55]
-2018-11-12 22:52:06,921 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/index.html", line 21, in block "app_content"
+    <td width="20%">{{ '$%,.2f'|format(holding.value()) }}</td>
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/filters.py", line 685, in do_format
+    return soft_unicode(value) % (kwargs or args)
+ValueError: unsupported format character ',' (0x2c) at index 2
+2018-11-14 21:55:01,650 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange-app/app/__init__.py:55]
+2018-11-14 21:55:03,222 ERROR: Exception on /index [GET] [in /Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -91,7 +64,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/routes.py", line 21, in index
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/routes.py", line 21, in index
     return render_template('index.html', title='Home', holdings=current_user.holdings)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -105,9 +78,9 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 1, in top-level template code
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 1, in top-level template code
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
     {% block doc -%}
@@ -117,10 +90,11 @@ Traceback (most recent call last):
     {% block body -%}
   File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
     {% block content -%}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/base.html", line 39, in block "content"
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/base.html", line 39, in block "content"
     {% block app_content %}{% endblock %}
-  File "/Users/johntemplon/Desktop/stock-exchange/app/templates/index.html", line 22, in block "app_content"
-    <td width="10%">{{ holding.value_change_str() }}</td>
-  File "/Users/johntemplon/Desktop/stock-exchange/app/models.py", line 76, in value_change_str
-    return "${.2f}".format(self.value_change).replace("$-", "-$")
-AttributeError: 'function' object has no attribute '2f'
+  File "/Users/johntemplon/Desktop/stock-exchange-app/app/templates/index.html", line 5, in block "app_content"
+    <p>Your portfolio is currently worth ${{ ':0.2f'|format(current_user.portfolio_value())}}.</p>
+  File "/Users/johntemplon/.virtualenvs/flask/lib/python3.6/site-packages/jinja2/filters.py", line 685, in do_format
+    return soft_unicode(value) % (kwargs or args)
+TypeError: not all arguments converted during string formatting
+2018-11-14 21:57:39,528 INFO: Stock Exchange startup [in /Users/johntemplon/Desktop/stock-exchange-app/app/__init__.py:55]

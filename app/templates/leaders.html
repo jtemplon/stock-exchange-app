@@ -11,7 +11,7 @@
 	  	{% for l in leaders %}
 	  	<tr>
 			<td>{{ l.username }}</td> 
-			<td>{{ '$%.2f'|format(l.portfolio_value()) }}</td> 
+			<td>{{ '${:,.2f}'.format(l.portfolio_value()) }}</td> 
 			<td><a href="{{ url_for('user', username=l.username) }}">Holdings</a></td>
 		</tr>
 		{% endfor %}
