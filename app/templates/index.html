@@ -2,7 +2,7 @@
 
 {% block app_content %}
       <h1>Hello, {{ current_user.username }}!</h1>
-	  <p>Your portfolio is currently worth {{ '${:,.2f}'.format(current_user.portfolio_value())}}.</p>
+	  <p>Your portfolio is currently worth {{ '${:,.2f}'.format(current_user.portfolio_value)}}.</p>
 	  <table text-align="left", width="100%">
       <tr>
 		  <th>Team</th>
@@ -18,7 +18,7 @@
 		  <td width="10%">{{ holding.shares }}</td>
 		  <td width="20%">{{ '${:.2f}'.format(holding.purchase_price) }}</td>
 		  <td width="20%">{{ '${:.2f}'.format(holding.asset.price) }}</td>
-		  <td width="20%">{{ '${:,.2f}'.format(holding.value()) }}</td>
+		  <td width="20%">{{ '${:,.2f}'.format(holding.value) }}</td>
 		  <td width="10%">{{ holding.value_change_str() }}</td>
 	  </tr>
       {% endfor %}

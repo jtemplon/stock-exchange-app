@@ -4,6 +4,7 @@ from datetime import datetime
 from time import time
 from app import app, db, login
 from hashlib import md5
+from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 import jwt
 
 @login.user_loader
@@ -51,8 +52,9 @@ class User(UserMixin, db.Model):
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'\
             .format(digest, size)
     
+    @hybrid_property
     def portfolio_value(self):
-        holdings_value = sum([ h.value() for h in self.holdings ])
+        holdings_value = sum([ h.value for h in self.holdings ])
         return round(self.cash + holdings_value, 2)
 
 class Holding(db.Model):
@@ -66,11 +68,12 @@ class Holding(db.Model):
     def __repr__(self):
         return '<Holding {}>'.format(self.team)
     
+    @hybrid_property
     def value(self):
         return round(self.shares * self.asset.price, 2)
     
     def value_change(self):
-        return self.value() - round(self.shares * self.purchase_price, 2)
+        return self.value - round(self.shares * self.purchase_price, 2)
     
     def value_change_str(self):
         return "${0:.2f}".format(self.value_change()).replace("$-", "-$")

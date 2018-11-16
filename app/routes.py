@@ -142,5 +142,5 @@ def transaction():
 @login_required
 def leaders():
     users = User.query.all()
-    leaders = sorted(users, key=lambda x: x.portfolio_value(), reverse=True)[:20]
+    leaders = sorted(users, key=lambda x: x.portfolio_value, reverse=True)[:20]
     return render_template('leaders.html', title='Leaders', leaders=leaders)
