@@ -28,11 +28,13 @@ def limit_and_calculate_prices(kp_df):
     mid_majors["price"] = mid_majors["AdjEM_num"] + \
                           abs(mid_majors["AdjEM_num"].min()) + \
                           0.1
-    mid_majors.to_csv("price_csvs/prices_{}".format(datetime.utcnow()), index=None)
+    dirname = os.path.dirname(__file__)
+    mid_majors.to_csv(dirname + "/price_csvs/prices_{}".format(datetime.utcnow()), index=None)
     return mid_majors
     
 def insert_data(db_path, df):
-    conn = sqlite3.connect('app.db')
+    dirname = os.path.dirname(__file__)
+    conn = sqlite3.connect(dirname + 'app.db')
 
 
     for i, r in df.iterrows():
@@ -53,7 +55,6 @@ def insert_data(db_path, df):
     conn.close()
 
 if __name__ == "__main__":
-    db_path = sys.argv[1]
     kp_df = scrape_kenpom()
     mid_df = limit_and_calculate_prices(kp_df)
-    insert_data(db_path, mid_df)
+    insert_data(mid_df)
