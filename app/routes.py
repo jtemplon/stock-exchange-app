@@ -7,6 +7,7 @@ from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
 from app.models import User, Holding, Transaction
 from datetime import datetime
+from sqlalchemy import desc
 
 @app.before_request
 def before_request():
@@ -93,7 +94,7 @@ def user(username):
     transactions = Transaction\
         .query\
         .filter_by(user_id=user.id)\
-        .order_by(Transaction.timestamp)\
+        .order_by(desc(Transaction.timestamp))\
         .limit(10)
     return render_template('user.html', user=user, holdings=holdings, transactions=transactions)
 
