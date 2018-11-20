@@ -1,26 +1,21 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-      <h1>Hello, {{ current_user.username }}!</h1>
-	  <p>Your portfolio is currently worth {{ '${:,.2f}'.format(current_user.portfolio_value)}}.</p>
-	  <table text-align="left", width="100%">
-      <tr>
-		  <th>Team</th>
-		  <th>Shares</th>
-		  <th>Purchase Price</th>
-		  <th>Current Price</th>
-		  <th>Current Value</th>
-		  <th>Change</th>
-	  </tr>
-      {% for holding in holdings %}
-      <tr>
-		  <td width="20%">{{ holding.stock }}</td>
-		  <td width="10%">{{ holding.shares }}</td>
-		  <td width="20%">{{ '${:.2f}'.format(holding.purchase_price) }}</td>
-		  <td width="20%">{{ '${:.2f}'.format(holding.asset.price) }}</td>
-		  <td width="20%">{{ '${:,.2f}'.format(holding.value) }}</td>
-		  <td width="10%">{{ holding.value_change_str() }}</td>
-	  </tr>
-      {% endfor %}
-      </table>
+
+<h1>The Mid-Major Madness Stock Exchange</h1>
+<img src="/static/mmm-logo.png" alt="Mid-Major Madness Logo" height="278" width="347" align="right">
+
+<h3>About</h3>
+
+<p>Welcome to The Mid-Major Stock Exchange.</p>
+
+<h3>Basics</h3>
+
+<p><strong>Teams:</strong> All teams outside of the six power conferences.</p>
+<p><strong>Starting Cash:</strong> $500</p>
+<p><strong>Who Made This?:</strong> The idea was originally conceived by <a href="https://www.twitter.com/ChrisSchutte3">Chris Schutte</a> of <a href="https://www.midmajormadness.com/">Mid-Major Madness</a>. The app was built by <a href="https://twitter.com/nybuckets">John Templon.</a></p>
+<p><strong>How Do Prices Work?:</strong> Prices are directly related to a team's adjusted efficiency margin on KenPom. (The <i>pseudo formula</i> is: KenPom AdjEM + abs(min(KenPom AdjEM)) + 0.10.)</p>
+
+
+
 {% endblock%}

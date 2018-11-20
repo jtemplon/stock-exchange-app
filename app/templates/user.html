@@ -12,20 +12,52 @@
 					</p>
 				{% endif %}
 				<p>
-					<strong>Portfolio Value:</strong> {{ '${:,.2f}'.format(user.portfolio_value)}}
+					<strong>Portfolio Value:</strong> {{ '${:,.2f}'.format(user.portfolio_value)}}<br>
+					<strong>Available Cash:</strong> {{ '${:,.2f}'.format(user.cash)}}
 			</td>
 		</tr>
 	</table>
 	<hr>
 	<h2>Current Holdings:</h2>
-	<table width="60%">
+	<table text-align="left", width="100%">
 		<tr>
-			<th>Team Name</th>
-			<th>No. of Shares</th>
-			<th>Current Value</th>
+		  <th>Team</th>
+		  <th>Shares</th>
+		  <th>Purchase Price</th>
+		  <th>Current Price</th>
+		  <th>Current Value</th>
+		  <th>Change</th>
 		</tr>
-		{% for holding in holdings %}
-			{% include '_holding.html' %}
-		{% endfor %}
+	{% for holding in holdings %}
+		<tr>
+			<td width="20%">{{ holding.stock }}</td>
+			<td width="10%">{{ holding.shares }}</td>
+			<td width="20%">{{ '${:.2f}'.format(holding.purchase_price) }}</td>
+			<td width="20%">{{ '${:.2f}'.format(holding.asset.price) }}</td>
+			<td width="20%">{{ '${:,.2f}'.format(holding.value) }}</td>
+			<td width="10%">{{ holding.value_change_str() }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	<br>
+	<br>
+	<h2>Recent Transactions:</h2>
+	<table text-align="left", width="70%">
+		<tr>
+		  <th>Timestamp</th>
+		  <th>Team</th>
+		  <th>Shares</th>
+		  <th>Price</th>
+		  <th>Type</th>
+		</tr>
+	{% for transaction in transactions %}
+		<tr>
+			<td width="20%">{{ moment(transaction.timestamp).format('LLL') }}</td>
+			<td width="20%">{{ transaction.team }}</td>
+			<td width="10%">{{ transaction.shares }}</td>
+			<td width="10%">{{ '${:.2f}'.format(transaction.price) }}</td>
+			<td width="10%">{{ transaction.buy_or_sell }}</td>
+		</tr>
+	{% endfor %}
 	</table>
 {% endblock %}
