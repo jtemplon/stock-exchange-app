@@ -29,12 +29,12 @@ def limit_and_calculate_prices(kp_df):
                           abs(mid_majors["AdjEM_num"].min()) + \
                           0.1
     dirname = os.path.dirname(__file__)
-    mid_majors.to_csv(dirname + "price_csvs/prices_{}".format(datetime.utcnow()), index=None)
+    mid_majors.to_csv(os.path.join(dirname, "price_csvs/prices_{}".format(datetime.utcnow())), index=None)
     return mid_majors
     
 def insert_data(df):
     dirname = os.path.dirname(__file__)
-    conn = sqlite3.connect(dirname + 'app.db')
+    conn = sqlite3.connect(os.path.join(dirname, 'app.db'))
 
 
     for i, r in df.iterrows():
