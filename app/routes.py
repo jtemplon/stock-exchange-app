@@ -23,7 +23,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for(url_for('user', username=current_user.username)))
+        return redirect(url_for('user', username=current_user.username))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -74,7 +74,7 @@ def reset_password_request():
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
-        return redirect(url_for(url_for('user', username=current_user.username)))
+        return redirect(url_for('user', username=current_user.username))
     user = User.verify_reset_password_token(token)
     if not user:
         return redirect(url_for('index'))
