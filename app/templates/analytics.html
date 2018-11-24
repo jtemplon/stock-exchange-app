@@ -4,21 +4,23 @@
 <h2>Mid-Major Madness Stock Exchange Analytics</h2>
 
 <h3>Recent Transactions</h3>
-<table text-align="left", width="70%">
+<table text-align="left", width="90%">
 	<tr>
 	  <th>Timestamp</th>
+	  <th>Username</th>
 	  <th>Team</th>
 	  <th>Shares</th>
 	  <th>Price</th>
 	  <th>Type</th>
 	</tr>
-{% for transaction in latest_transactions %}
+{% for lt in latest_transactions %}
 	<tr>
-		<td width="20%">{{ moment(transaction.timestamp).format('LLL') }}</td>
-		<td width="20%">{{ transaction.team }}</td>
-		<td width="10%">{{ transaction.shares }}</td>
-		<td width="10%">{{ '${:.2f}'.format(transaction.price) }}</td>
-		<td width="10%">{{ transaction.buy_or_sell }}</td>
+		<td width="20%">{{ moment(lt.timestamp).format('LLL') }}</td>
+		<td width="20%"><a href="{{ url_for('user', username=lt.moves.username) }}">{{ lt.moves.username }}</a></td>
+		<td width="20%">{{ lt.team }}</td>
+		<td width="10%">{{ lt.shares }}</td>
+		<td width="10%">{{ '${:.2f}'.format(lt.price) }}</td>
+		<td width="10%">{{ lt.buy_or_sell }}</td>
 	</tr>
 {% endfor %}
 </table>
@@ -32,7 +34,7 @@
 {% for vols in volume_stocks %}
 	<tr>
 		<td width="25%">{{ vols.stock }}</td>
-		<td width="25%">{{ vols.total }}</td>
+		<td width="25%">{{ '{:,d}'.format(vols.total) }}</td>
 	</tr>
 {% endfor %}
 </table>

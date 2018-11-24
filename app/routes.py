@@ -155,8 +155,7 @@ def leaders():
 @login_required
 def analytics():
     # The last 10 transactions to display
-    transactions = Transaction\
-        .query\
+    transactions = db.session.query(Transaction)\
         .order_by(desc(Transaction.timestamp))\
         .limit(10)
     # The top holdings by number of stocks
