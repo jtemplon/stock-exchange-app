@@ -7,7 +7,8 @@ from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
 from app.models import User, Holding, Transaction
 from datetime import datetime
-from sqlalchemy import desc
+from sqlalchemy import desc, func
+from sqlalchemy.sql import label
 
 @app.before_request
 def before_request():
@@ -149,3 +150,30 @@ def leaders():
     users = User.query.all()
     leaders = sorted(users, key=lambda x: x.portfolio_value, reverse=True)[:20]
     return render_template('leaders.html', title='Leaders', leaders=leaders)
+
+@app.route('/analytics')
+@login_required
+def analytics():
+    # The last 10 transactions to display
+    transactions = Transaction\
+        .query\
+        .order_by(desc(Transaction.timestamp))\
+        .limit(10)
+    # The top holdings by number of stocks
+    top_volume_holdings = db.session.query(Holding.stock,
+        label('total', func.sum(Holding.shares)))\
+        .group_by(Holding.stock)\
+        .order_by(desc('total'))\
+        .limit(10)
+    # The top holdings by value
+    top_value_holdings = db.session.query(Holding.stock,
+        label('total', func.sum(Holding.shares * Holding.purchase_price)))\
+        .group_by(Holding.stock)\
+        .order_by(desc('total'))\
+        .limit(10)
+    return render_template('analytics.html', title='Analytics', 
+                latest_transactions=transactions, 
+                volume_stocks=top_volume_holdings,
+                value_stocks=top_value_holdings
+            )
+        
