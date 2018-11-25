@@ -89,6 +89,12 @@ class Stock(db.Model):
     def __str__(self):
         return "{}: ${:.2f}".format(self.name, self.price)
 
+class StockPriceHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120))
+    date = db.Column(db.Date, index=True)
+    price = db.Column(db.Float)
+
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)

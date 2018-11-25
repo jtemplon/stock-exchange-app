@@ -46,6 +46,12 @@ def insert_data(df):
         # print(sql)
         cur = conn.cursor()
         cur.execute(sql)
+        
+        # This inserts the data into stock_price_history table
+        sph_sql = '''INSERT INTO stock_price_history(name, date, price) VALUES (?, ?, ?)'''
+        sph_vals = (r["Team"], datetime.utcnow().strftime("%Y-%m-%d"), r["price"])
+        cur = conn.cursor()
+        cur.execute(sph_sql, sph_vals)
 
     select = '''SELECT * FROM stock WHERE name = "Abilene Christian"'''
     cur = conn.cursor()
