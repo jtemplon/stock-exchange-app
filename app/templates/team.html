@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<!-- The Javascript to render the graph  -->
+<script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+<script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+
+<h1>{{ team.name }}</h1>
+<br>
+<strong>Current Price:</strong> {{ '${:,.2f}'.format(team.price) }}<br>
+<strong>Max Price:</strong> {{ '${:,.2f}'.format(max_price) }}<br>
+<strong>Min Price:</strong> {{ '${:,.2f}'.format(min_price) }}<br>
+<strong>Total Holdings:</strong> {{ '{:,d}'.format(total_holdings) }}
+<br>
+<br>
+{{ line_chart.render()|safe }}
+
+{% endblock %}

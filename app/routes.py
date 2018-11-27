@@ -5,10 +5,11 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, TransactionForm
 from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
-from app.models import User, Holding, Transaction
+from app.models import User, Holding, Transaction, Stock, StockPriceHistory
 from datetime import datetime
 from sqlalchemy import desc, func
 from sqlalchemy.sql import label
+import pygal
 
 @app.before_request
 def before_request():
@@ -175,4 +176,31 @@ def analytics():
                 volume_stocks=top_volume_holdings,
                 value_stocks=top_value_holdings
             )
+
+@app.route('/team/<teamname>')
+@login_required
+def team(teamname):
+    team = Stock.query.filter_by(name=teamname).first_or_404()
+    prices = StockPriceHistory.query.filter_by(name=teamname).all()
+    
+    # create a line chart
+    title = 'Stock Price History for {}\n from {} to {}'\
+        .format(teamname, prices[0].date.strftime("%b. %d"), prices[-1].date.strftime("%b. %d"))
+    line_chart = pygal.Line(
+                        width=600, height=300,
+                        explicit_size=True, title=title,
+                        x_label_rotation=20,
+                        range=(0,max([ p.price for p in prices ])+5),
+                        disable_xml_declaration=True,
+                        show_legend=False
+                  )
+    line_chart.x_labels = [ p.date for p in prices ]
+    line_chart.add('Price', [ p.price for p in prices ])
+    
+    return render_template(
+        'team.html', team=team, prices=prices, 
+        max_price=max([p.price for p in prices]),
+        min_price=min([p.price for p in prices]),
+        total_holdings=sum([h.shares for h in team.holdings]),
+        line_chart=line_chart, title=title)
         

@@ -33,7 +33,7 @@
 	</tr>
 {% for vols in volume_stocks %}
 	<tr>
-		<td width="25%">{{ vols.stock }}</td>
+		<td width="25%"><a href="{{ url_for('team', teamname=vols.stock) }}">{{ vols.stock }}</a></td>
 		<td width="25%">{{ '{:,d}'.format(vols.total) }}</td>
 	</tr>
 {% endfor %}
@@ -47,7 +47,7 @@
 	</tr>
 {% for vals in value_stocks %}
 	<tr>
-		<td width="25%">{{ vals.stock }}</td>
+		<td width="25%"><a href="{{ url_for('team', teamname=vals.stock) }}">{{ vals.stock }}</a></td>
 		<td width="25%">{{ '${:,.2f}'.format(vals.total) }}</td>
 	</tr>
 {% endfor %}

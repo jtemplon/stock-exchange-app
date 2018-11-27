@@ -30,7 +30,7 @@
 		</tr>
 	{% for holding in holdings %}
 		<tr>
-			<td width="20%">{{ holding.stock }}</td>
+			<td width="20%"><a href="{{ url_for('team', teamname=holding.stock) }}">{{ holding.stock }}</a></td>
 			<td width="10%">{{ holding.shares }}</td>
 			<td width="20%">{{ '${:.2f}'.format(holding.purchase_price) }}</td>
 			<td width="20%">{{ '${:.2f}'.format(holding.asset.price) }}</td>
