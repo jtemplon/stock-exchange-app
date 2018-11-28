@@ -197,10 +197,13 @@ def team(teamname):
     line_chart.x_labels = [ p.date for p in prices ]
     line_chart.add('Price', [ p.price for p in prices ])
     
+    holdings = sorted(team.holdings, key=lambda x: x.shares, reverse=True)[:5]
+    
     return render_template(
         'team.html', team=team, prices=prices, 
         max_price=max([p.price for p in prices]),
         min_price=min([p.price for p in prices]),
         total_holdings=sum([h.shares for h in team.holdings]),
+        holdings=holdings,
         line_chart=line_chart, title=title)
         
