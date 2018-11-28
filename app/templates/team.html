@@ -16,7 +16,7 @@
 <strong>Top Holders:</strong><br>
 <br>
 {% for h in holdings %}
-	<a href="{{ url_for('user', username=h.owner.username) }}">{{ h.owner.username }}</a>: {{ h.shares }}<br>
+	<a href="{{ url_for('user', username=h.owner.username) }}">{{ h.owner.username }}</a>: {{ "{:,d}".format(h.shares) }}<br>
 {% endfor %}
 <br>
 <br>
