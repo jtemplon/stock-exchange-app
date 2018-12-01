@@ -6,7 +6,7 @@ from app.forms import LoginForm, RegistrationForm, TransactionForm
 from app.forms import ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
 from app.models import User, Holding, Transaction, Stock, StockPriceHistory
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from sqlalchemy import desc, func
 from sqlalchemy.sql import label
 import pygal
@@ -130,6 +130,8 @@ def transaction():
             current_cash = current_user.cash + round((form.shares.data * form.stock.data.price), 2)
             current_user.cash = round(current_cash, 2)
             holding.shares = holding.shares - form.shares.data
+            if holding.shares == 0:
+                db.session.delete(holding)
         
         new_transaction = Transaction(
             team=form.stock.data.name,
