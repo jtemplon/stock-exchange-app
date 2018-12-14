@@ -5,6 +5,7 @@ from app.models import User, Stock, Holding
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from app import db
 from flask_login import current_user
+from datetime import datetime
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -40,6 +41,12 @@ class TransactionForm(FlaskForm):
     buy_or_sell = RadioField('Transaction Type', choices=transactions, validators=[DataRequired()])
     submit = SubmitField('Complete Transaction')
     
+    def validate_stock(self, stock):
+        time = datetime.utcnow()
+        est = time.hour - 5
+        if (est < 8) or (est > 18):
+            raise ValidationError('The market is closed. Come back after 8 a.m. EST tomorrow.')
+
     def validate_shares(self, shares):
         if self.buy_or_sell.data == "buy":
             if current_user.cash < (shares.data * self.stock.data.price):

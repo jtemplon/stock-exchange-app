@@ -4,15 +4,17 @@
 <h2>Mid-Major Madness Stock Exchange Analytics</h2>
 
 <h3>Recent Transactions</h3>
-<table text-align="left", width="90%">
-	<tr>
-	  <th>Timestamp</th>
-	  <th>Username</th>
-	  <th>Team</th>
-	  <th>Shares</th>
-	  <th>Price</th>
-	  <th>Type</th>
-	</tr>
+<table class="table" text-align="left", width="90%">
+	<thead>
+		<tr>
+		  <th>Timestamp</th>
+		  <th>Username</th>
+		  <th>Team</th>
+		  <th>Shares</th>
+		  <th>Price</th>
+		  <th>Type</th>
+		</tr>
+	</thead>
 {% for lt in latest_transactions %}
 	<tr>
 		<td width="20%">{{ moment(lt.timestamp).format('LLL') }}</td>
@@ -26,11 +28,13 @@
 </table>
 <br>
 <h3>Most Held Stocks (By Volume)</h3>
-<table text-align="left", width="50%">
-	<tr>
-	  <th>Team</th>
-	  <th>Shares</th>
-	</tr>
+<table class="table" text-align="left", width="50%">
+	<thead>
+		<tr>
+			<th>Team</th>
+			<th>Shares</th>
+		</tr>
+	</thead>
 {% for vols in volume_stocks %}
 	<tr>
 		<td width="25%"><a href="{{ url_for('team', teamname=vols.stock) }}">{{ vols.stock }}</a></td>
@@ -40,11 +44,13 @@
 </table>
 <br>
 <h3>Most Held Stocks (By Total Purchase Price)</h3>
-<table text-align="left", width="50%">
-	<tr>
-	  <th>Team</th>
-	  <th>Value</th>
-	</tr>
+<table class="table" text-align="left", width="50%">
+	<thead>
+		<tr>
+		  <th>Team</th>
+		  <th>Value</th>
+		</tr>
+	</thead>
 {% for vals in value_stocks %}
 	<tr>
 		<td width="25%"><a href="{{ url_for('team', teamname=vals.stock) }}">{{ vals.stock }}</a></td>

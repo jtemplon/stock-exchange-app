@@ -19,15 +19,17 @@
 	</table>
 	<hr>
 	<h2>Current Holdings:</h2>
-	<table text-align="left", width="100%">
-		<tr>
-		  <th>Team</th>
-		  <th>Shares</th>
-		  <th>Purchase Price</th>
-		  <th>Current Price</th>
-		  <th>Current Value</th>
-		  <th>Change</th>
-		</tr>
+	<table class="table" width="100%">
+		<thead>
+			<tr>
+			  <th>Team</th>
+			  <th>Shares</th>
+			  <th>Purchase Price</th>
+			  <th>Current Price</th>
+			  <th>Current Value</th>
+			  <th>Change</th>
+			</tr>
+		</thead>
 	{% for holding in holdings %}
 		<tr>
 			<td width="20%"><a href="{{ url_for('team', teamname=holding.stock) }}">{{ holding.stock }}</a></td>
@@ -42,14 +44,16 @@
 	<br>
 	<br>
 	<h2>Recent Transactions:</h2>
-	<table text-align="left", width="70%">
-		<tr>
-		  <th>Timestamp</th>
-		  <th>Team</th>
-		  <th>Shares</th>
-		  <th>Price</th>
-		  <th>Type</th>
-		</tr>
+	<table class="table" text-align="left", width="70%">
+		<thead>
+			<tr>
+			  <th>Timestamp</th>
+			  <th>Team</th>
+			  <th>Shares</th>
+			  <th>Price</th>
+			  <th>Type</th>
+			</tr>
+		</thead>
 	{% for transaction in transactions %}
 		<tr>
 			<td width="20%">{{ moment(transaction.timestamp).format('LLL') }}</td>

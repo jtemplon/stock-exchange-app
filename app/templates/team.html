@@ -6,20 +6,24 @@
 <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
 <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
 
-<h1>{{ team.name }}</h1>
-<br>
-<strong>Current Price:</strong> {{ '${:,.2f}'.format(team.price) }}<br>
-<strong>Max Price:</strong> {{ '${:,.2f}'.format(max_price) }}<br>
-<strong>Min Price:</strong> {{ '${:,.2f}'.format(min_price) }}<br>
-<strong>Total Holdings:</strong> {{ '{:,d}'.format(total_holdings) }}<br>
-<br>
-<strong>Top Holders:</strong><br>
-<br>
-{% for h in holdings %}
-	<a href="{{ url_for('user', username=h.owner.username) }}">{{ h.owner.username }}</a>: {{ "{:,d}".format(h.shares) }}<br>
-{% endfor %}
-<br>
-<br>
-{{ line_chart.render()|safe }}
-
+<div class="container">
+	<h1>{{ team.name }}</h1>
+	<br/>
+	<ul class="list-inline">
+		<li class="list-inline-item"><strong>Current Price:</strong> {{ '${:,.2f}'.format(team.price) }}</li>
+		<li class="list-inline-item"><strong>Max Price:</strong> {{ '${:,.2f}'.format(max_price) }}</li>
+		<li class="list-inline-item"><strong>Min Price:</strong> {{ '${:,.2f}'.format(min_price) }}</li>
+		<li class="list-inline-item"><strong>Total Holdings:</strong> {{ '{:,d}'.format(total_holdings) }}</li>
+	</ul>
+	<br/>
+	<strong>Top Holders:</strong><br>
+	<ul class="list-unstyled">
+	{% for h in holdings %}
+		<li><a href="{{ url_for('user', username=h.owner.username) }}">{{ h.owner.username }}</a>: {{ "{:,d}".format(h.shares) }}</li>
+	{% endfor %}
+	</ul>
+	<br/>
+	<br/>
+	{{ line_chart.render()|safe }}
+</div>
 {% endblock %}

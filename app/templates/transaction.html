@@ -7,9 +7,11 @@
 	{% if current_user.holdings %}
 	<div style="padding-bottom: 25px;">
 		<p>You currently own these stocks:</p>
+		<ul class="list-unstyled">
 		{% for holding in current_user.holdings %}
-		<strong>{{ holding.stock }}:</strong> {{ holding.shares }} shares<br>
+		<li><strong>{{ holding.stock }}:</strong> {{ holding.shares }} shares</li>
 		{% endfor %}
+		</ul>
 	</div>
 	{% endif %}
 	
