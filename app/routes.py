@@ -200,7 +200,7 @@ def team(teamname):
     price_points = []
     for p in prices:
         price_points.append(p.price)
-        if p.date.day%7 == 0:
+        if p.date.weekday() == 0:
             x_labels.append(p.date)
         else:
             x_labels.append("")
