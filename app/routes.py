@@ -197,7 +197,7 @@ def team(teamname):
                         show_legend=False
                   )
     x_labels = []
-    price_points []
+    price_points = []
     for i, p in enumerate(prices):
         price_points.append(p.price)
         if i%4 == 0:
