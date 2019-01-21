@@ -198,9 +198,9 @@ def team(teamname):
                   )
     x_labels = []
     price_points = []
-    for i, p in enumerate(prices):
+    for p in prices:
         price_points.append(p.price)
-        if i%4 == 0:
+        if p.date.day%7 == 0:
             x_labels.append(p.date)
         else:
             x_labels.append("")
