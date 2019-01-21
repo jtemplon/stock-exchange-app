@@ -192,11 +192,11 @@ def team(teamname):
                         width=600, height=300,
                         explicit_size=True, title=title,
                         x_label_rotation=20,
-                        range=(0,max([ p.price for p in prices ])+5),
+                        range=(0,max([ p.price for p in prices ])+2),
                         disable_xml_declaration=True,
                         show_legend=False
                   )
-    line_chart.x_labels = [ p.date for p in prices ]
+    line_chart.x_labels = [ p.date for i, p in enumerate(prices) if i % 4 == 0 else "" ]
     line_chart.add('Price', [ p.price for p in prices ])
     
     holdings = sorted(team.holdings, key=lambda x: x.shares, reverse=True)[:5]
